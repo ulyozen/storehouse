@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{A64AD361-E69F-4436-88E5-AEA28C384171}"
+	ProjectSection(SolutionItems) = preProject
+		docs\Readme.md = docs\Readme.md
+		docs\struct.md = docs\struct.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3378D028-998A-4722-AC4C-94AE6FE0155A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{F2E6E924-F726-4B98-93CC-3BF640E406FD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Warehouse360.Infrastructure", "Warehouse360.Infrastructure", "{F518B79E-BD8F-4DC9-9A13-B501637AF2EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse360.Core", "src\Warehouse360.Core\Warehouse360.Core.csproj", "{59456727-9844-4FD9-BFD7-CABAF13B2964}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse360.Application", "src\Warehouse360.Application\Warehouse360.Application.csproj", "{742CDB06-CE19-4620-B999-55B048D70C77}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution-items", "solution-items", "{C31CC998-89A2-4C4C-80FC-6FCF9E64E742}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F518B79E-BD8F-4DC9-9A13-B501637AF2EE} = {3378D028-998A-4722-AC4C-94AE6FE0155A}
+		{59456727-9844-4FD9-BFD7-CABAF13B2964} = {3378D028-998A-4722-AC4C-94AE6FE0155A}
+		{742CDB06-CE19-4620-B999-55B048D70C77} = {3378D028-998A-4722-AC4C-94AE6FE0155A}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{59456727-9844-4FD9-BFD7-CABAF13B2964}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59456727-9844-4FD9-BFD7-CABAF13B2964}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59456727-9844-4FD9-BFD7-CABAF13B2964}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59456727-9844-4FD9-BFD7-CABAF13B2964}.Release|Any CPU.Build.0 = Release|Any CPU
+		{742CDB06-CE19-4620-B999-55B048D70C77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{742CDB06-CE19-4620-B999-55B048D70C77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{742CDB06-CE19-4620-B999-55B048D70C77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{742CDB06-CE19-4620-B999-55B048D70C77}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
