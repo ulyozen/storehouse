@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{A64AD361-E69F-4436-88E5-AEA28C384171}"
 	ProjectSection(SolutionItems) = preProject
 		docs\Readme.md = docs\Readme.md
-		docs\struct.md = docs\struct.md
+		docs\Structure.md = docs\Structure.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3378D028-998A-4722-AC4C-94AE6FE0155A}"
@@ -22,6 +22,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution-items", "solution-
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Warehouse360.Core", "Warehouse360.Core", "{AE93E829-0A07-455D-80A1-1734488BF21E}"
+	ProjectSection(SolutionItems) = preProject
+		docs\Warehouse360.Core\Readme.md = docs\Warehouse360.Core\Readme.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CustomerManagment", "CustomerManagment", "{45E4A27D-71A4-41CA-B62E-5B252579AAAE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InventoryManagment", "InventoryManagment", "{0239155C-448F-4DE0-BDCD-C7A96B273D3E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OrderManagment", "OrderManagment", "{CB4FD4C5-276D-416F-AD4A-4665CF5675C3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +42,10 @@ Global
 		{F518B79E-BD8F-4DC9-9A13-B501637AF2EE} = {3378D028-998A-4722-AC4C-94AE6FE0155A}
 		{59456727-9844-4FD9-BFD7-CABAF13B2964} = {3378D028-998A-4722-AC4C-94AE6FE0155A}
 		{742CDB06-CE19-4620-B999-55B048D70C77} = {3378D028-998A-4722-AC4C-94AE6FE0155A}
+		{AE93E829-0A07-455D-80A1-1734488BF21E} = {A64AD361-E69F-4436-88E5-AEA28C384171}
+		{45E4A27D-71A4-41CA-B62E-5B252579AAAE} = {AE93E829-0A07-455D-80A1-1734488BF21E}
+		{0239155C-448F-4DE0-BDCD-C7A96B273D3E} = {AE93E829-0A07-455D-80A1-1734488BF21E}
+		{CB4FD4C5-276D-416F-AD4A-4665CF5675C3} = {AE93E829-0A07-455D-80A1-1734488BF21E}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{59456727-9844-4FD9-BFD7-CABAF13B2964}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
