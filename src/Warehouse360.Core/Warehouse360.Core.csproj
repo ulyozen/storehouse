@@ -7,8 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Folder Include="CatalogManagement\" />
       <Folder Include="CustomerManagement\Aggregates\" />
-      <Folder Include="CustomerManagement\Entities\" />
       <Folder Include="CustomerManagement\Enums\" />
       <Folder Include="CustomerManagement\Events\" />
       <Folder Include="CustomerManagement\Services\" />
@@ -16,11 +16,6 @@
       <Folder Include="InventoryManagement\Aggregates\" />
       <Folder Include="InventoryManagement\Services\" />
       <Folder Include="OrderManagement\Aggregates\" />
-      <Folder Include="OrderManagement\Entities\" />
-      <Folder Include="OrderManagement\Enums\" />
-      <Folder Include="OrderManagement\Events\" />
-      <Folder Include="OrderManagement\Services\" />
-      <Folder Include="OrderManagement\ValueObjects\" />
     </ItemGroup>
 
 </Project>

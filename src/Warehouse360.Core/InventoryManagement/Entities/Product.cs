@@ -14,6 +14,10 @@ public class Product : BaseEntity, IAggregateRoot
     public Dimensions Dimensions { get; private set; }
     public ProductStatus Status { get; private set; }
     public int Quantity { get; private set; }
+    
+    private readonly List<object> _domainEvents = new List<object>();
+
+    public IReadOnlyCollection<object> DomainEvents => _domainEvents.AsReadOnly();
 
     public Product(string name, string description, Money price, Dimensions dimensions, int quantity)
     {
@@ -39,8 +43,7 @@ public class Product : BaseEntity, IAggregateRoot
             Status = ProductStatus.OutOfStock;
         }
         
-        var productEvent = new ProductReserved(Id, quantity);
-        // Логика для публикации события
+        _domainEvents.Add(new ProductReserved(Id, quantity));
     }
     
     public void UpdateDescription(string description)
@@ -51,11 +54,16 @@ public class Product : BaseEntity, IAggregateRoot
     public void UpdateQuantityIncrease(int quantity)
     {
         Quantity += quantity;
+        if (Quantity > 0 && Status == ProductStatus.OutOfStock)
+        {
+            MarkAsAvailable();
+        }
     }
 
     public void UpdatePrice(Money newPrice)
     {
         Price = newPrice ?? throw new ArgumentNullException(nameof(newPrice));
+        _domainEvents.Add(new ProductPriceUpdated(Id, newPrice.Amount));
     }
 
     public void MarkAsOutOfStock()

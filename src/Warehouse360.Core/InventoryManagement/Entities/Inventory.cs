@@ -8,6 +8,10 @@ public class Inventory
     public string Location { get; private set; }
     public InventoryStatus Status { get; private set; }
     public List<Product> Products { get; private set; }
+    
+    private readonly List<object> _domainEvents = new List<object>();
+
+    public IReadOnlyCollection<object> DomainEvents => _domainEvents.AsReadOnly();
 
     public Inventory(string location)
     {
@@ -24,8 +28,7 @@ public class Inventory
         Products.Add(product);
         UpdateStatus();
         
-        var productEvent = new ProductAddedToInventory(product.Id, product.Name, product.Quantity);
-        // Логика для публикации события
+        _domainEvents.Add(new ProductAddedToInventory(product.Id, product.Name, product.Quantity));
     }
 
     public void RemoveProduct(Product product)
@@ -38,6 +41,8 @@ public class Inventory
 
         Products.Remove(product);
         UpdateStatus();
+        
+        _domainEvents.Add(new ProductRemovedFromInventory(product.Id));
     }
 
     public void ReplenishStock(Product product, int quantity)
@@ -48,6 +53,8 @@ public class Inventory
         product.UpdateQuantityIncrease(quantity);
         product.MarkAsAvailable();
         UpdateStatus();
+        
+        _domainEvents.Add(new ProductStockReplenished(product.Id, quantity));
     }
 
     private void UpdateStatus()
