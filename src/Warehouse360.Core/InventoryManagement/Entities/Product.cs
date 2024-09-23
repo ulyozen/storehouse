@@ -46,6 +46,12 @@ public class Product : BaseEntity, IAggregateRoot
         _domainEvents.Add(new ProductReserved(Id, quantity));
     }
     
+    public void UpdatePrice(Money newPrice)
+    {
+        Price = newPrice ?? throw new ArgumentNullException(nameof(newPrice));
+        _domainEvents.Add(new ProductPriceUpdated(Id, newPrice.Amount));
+    }
+    
     public void UpdateDescription(string description)
     {
         Description = description ?? throw new ArgumentNullException(nameof(description));
@@ -58,12 +64,6 @@ public class Product : BaseEntity, IAggregateRoot
         {
             MarkAsAvailable();
         }
-    }
-
-    public void UpdatePrice(Money newPrice)
-    {
-        Price = newPrice ?? throw new ArgumentNullException(nameof(newPrice));
-        _domainEvents.Add(new ProductPriceUpdated(Id, newPrice.Amount));
     }
 
     public void MarkAsOutOfStock()
