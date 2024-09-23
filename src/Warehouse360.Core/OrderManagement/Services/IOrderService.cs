@@ -4,8 +4,8 @@ namespace Warehouse360.Core.OrderManagement.Services;
 
 public interface IOrderService
 {
-    Order CreateOrder(Guid customerId);
-    void AddProductToOrder(Guid orderId, Guid productId, int quantity);
-    void CompleteOrder(Guid orderId);
-    void CancelOrder(Guid orderId);
+    Task<Order> CreateOrder(Guid customerId);
+    Task AddProductToOrder(Guid orderId, Guid productId, int quantity);
+    Task CompleteOrder(Guid orderId);
+    Task CancelOrder(Guid orderId);
 }

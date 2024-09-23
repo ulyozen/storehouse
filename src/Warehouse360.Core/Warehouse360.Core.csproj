@@ -7,13 +7,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="CatalogManagement\" />
       <Folder Include="CustomerManagement\Aggregates\" />
       <Folder Include="CustomerManagement\Enums\" />
       <Folder Include="CustomerManagement\Events\" />
-      <Folder Include="CustomerManagement\Services\" />
-      <Folder Include="CustomerManagement\ValueObjects\" />
-      <Folder Include="InventoryManagement\Aggregates\" />
       <Folder Include="InventoryManagement\Services\" />
       <Folder Include="OrderManagement\Aggregates\" />
     </ItemGroup>
