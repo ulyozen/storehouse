@@ -7,10 +7,25 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="CategoryManagement\" />
-      <Folder Include="CustomerManagement\" />
-      <Folder Include="InventoryManagement\" />
-      <Folder Include="OrderManagement\" />
+      <Folder Include="CustomerManagement\Commands\" />
+      <Folder Include="CustomerManagement\Handlers\" />
+      <Folder Include="CustomerManagement\Queries\" />
+      <Folder Include="InventoryManagement\Commands\" />
+      <Folder Include="InventoryManagement\Handlers\" />
+      <Folder Include="InventoryManagement\Queries\" />
+      <Folder Include="OrderManagement\Commands\" />
+      <Folder Include="OrderManagement\Handlers\" />
+      <Folder Include="OrderManagement\Queries\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FluentValidation" Version="11.10.0" />
+      <PackageReference Include="MediatR" Version="12.4.1" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Warehouse360.Core\Warehouse360.Core.csproj" />
     </ItemGroup>
 
 </Project>

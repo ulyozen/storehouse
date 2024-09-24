@@ -12,9 +12,16 @@ public class Category : BaseEntity
     public Category Parent { get; private set; }
     public List<ProductCategory> ProductCategories { get; private set; }
 
+    public Category(string name, string description)
+    {
+        Name = name;
+        Description = description;
+        ProductCategories = new List<ProductCategory>();
+    }
+    
     public Category(string name, string description, string imageUrl, CategoryType categoryType, Category parent = null)
     {
-        Name = name ?? throw new ArgumentNullException(nameof(name));
+        Name = name;
         Description = description;
         ImageUrl = imageUrl;
         CategoryType = categoryType;
