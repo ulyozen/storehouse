@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Warehouse360.Application\Warehouse360.Application.csproj" />
+      <ProjectReference Include="..\Warehouse360.Core\Warehouse360.Core.csproj" />
+    </ItemGroup>
+
+</Project>
