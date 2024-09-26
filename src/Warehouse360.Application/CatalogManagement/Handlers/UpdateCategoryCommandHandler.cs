@@ -10,16 +10,13 @@ public class UpdateCategoryCommandHandler : IRequestHandler<UpdateCategoryComman
 {
     private readonly IValidator<UpdateCategoryCommand> _validator;
     private readonly ICategoryRepository _categoryRepository;
-    private readonly IUnitOfWork _unitOfWork;
 
     public UpdateCategoryCommandHandler(
         IValidator<UpdateCategoryCommand> validator, 
-        ICategoryRepository categoryRepository, 
-        IUnitOfWork unitOfWork)
+        ICategoryRepository categoryRepository)
     {
         _validator = validator;
         _categoryRepository = categoryRepository;
-        _unitOfWork = unitOfWork;
     }
     
     public async Task Handle(UpdateCategoryCommand request, CancellationToken cancellationToken)
@@ -33,6 +30,5 @@ public class UpdateCategoryCommandHandler : IRequestHandler<UpdateCategoryComman
         }
 
         category.UpdateProperties(request.Name, request.Description);
-        await _unitOfWork.SaveChangeAsync(cancellationToken);
     }
 }

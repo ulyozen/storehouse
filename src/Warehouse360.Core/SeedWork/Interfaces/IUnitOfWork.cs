@@ -1,8 +1,12 @@
+using System.Data;
+
 namespace Warehouse360.Core.SeedWork.Interfaces;
 
 public interface IUnitOfWork : IDisposable
 {
-    Task SaveChangeAsync(CancellationToken cancellationToken);
-
-    Task RollbackAsync(CancellationToken cancellationToken);
+    IDbConnection Connection { get; }
+    IDbTransaction Transaction { get; }
+    Task BeginTransactionAsync();
+    Task CommitTransactionAsync();
+    Task RollbackTransactionAsync();
 }

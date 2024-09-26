@@ -11,16 +11,13 @@ public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryComman
 {
     private readonly IValidator<CreateCategoryCommand> _validator;
     private readonly ICategoryRepository _categoryRepository;
-    private readonly IUnitOfWork _unitOfWork;
 
     public CreateCategoryCommandHandler(
         IValidator<CreateCategoryCommand> validator, 
-        ICategoryRepository categoryRepository, 
-        IUnitOfWork unitOfWork)
+        ICategoryRepository categoryRepository)
     {
         _validator = validator;
         _categoryRepository = categoryRepository;
-        _unitOfWork = unitOfWork;
     }
     
     public async Task<Guid> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
@@ -30,8 +27,6 @@ public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryComman
         var category = new Category(request.Name, request.Description);
         
         await _categoryRepository.AddAsync(category, cancellationToken);
-        
-        await _unitOfWork.SaveChangeAsync(cancellationToken);
         
         return category.Id;
     }
