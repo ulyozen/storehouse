@@ -8,10 +8,6 @@ public class Email : ValueObject
 
     public Email(string value)
     {
-        if (string.IsNullOrEmpty(value) || !value.Contains("@"))
-        {
-            throw new ArgumentException("Invalid email format");
-        }
         Value = value;
     }
 

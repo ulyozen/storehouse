@@ -25,11 +25,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Warehouse360.Core", "Wareho
 		docs\Warehouse360.Core\Readme.md = docs\Warehouse360.Core\Readme.md
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CustomerManagment", "CustomerManagment", "{45E4A27D-71A4-41CA-B62E-5B252579AAAE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CustomerManagement", "CustomerManagement", "{45E4A27D-71A4-41CA-B62E-5B252579AAAE}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InventoryManagment", "InventoryManagment", "{0239155C-448F-4DE0-BDCD-C7A96B273D3E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InventoryManagement", "InventoryManagement", "{0239155C-448F-4DE0-BDCD-C7A96B273D3E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OrderManagment", "OrderManagment", "{CB4FD4C5-276D-416F-AD4A-4665CF5675C3}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OrderManagement", "OrderManagement", "{CB4FD4C5-276D-416F-AD4A-4665CF5675C3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse360.Persistence", "src\Warehouse360.Persistence\Warehouse360.Persistence.csproj", "{BE04C1D6-D670-42AF-AAD1-D74987934CFF}"
 EndProject
@@ -50,6 +50,11 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Warehouse360.Monitoring", "Warehouse360.Monitoring", "{9A24D2EB-707E-4C64-AA63-BD5E33995071}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse360.Api", "src\Warehouse360.Api\Warehouse360.Api.csproj", "{A58EA8B0-0289-4AE9-A248-2E204D9C9A44}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityManagement", "IdentityManagement", "{12A338E4-A2BA-4168-A9F0-9F18B5A4DDED}"
+	ProjectSection(SolutionItems) = preProject
+		docs\Warehouse360.Core\IdentityManagment\RolesAndPermisiions.md = docs\Warehouse360.Core\IdentityManagment\RolesAndPermisiions.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +78,7 @@ Global
 		{5CCFF767-6615-454E-8393-CC3AC797F1B6} = {978C747F-A64B-4E22-95FF-5ABCEB92F27F}
 		{9A24D2EB-707E-4C64-AA63-BD5E33995071} = {978C747F-A64B-4E22-95FF-5ABCEB92F27F}
 		{A58EA8B0-0289-4AE9-A248-2E204D9C9A44} = {3378D028-998A-4722-AC4C-94AE6FE0155A}
+		{12A338E4-A2BA-4168-A9F0-9F18B5A4DDED} = {AE93E829-0A07-455D-80A1-1734488BF21E}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{59456727-9844-4FD9-BFD7-CABAF13B2964}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

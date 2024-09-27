@@ -36,7 +36,7 @@ public class LoginCommandHandler  : IRequestHandler<LoginCommand, AuthResultDto>
         await _unitOfWork.BeginTransactionAsync();
         try
         {
-            var user = await _userRepository.GetByUsernameAsync(request.Username);
+            var user = await _userRepository.LoginByUsernameAsync(request.Username);
             
             if (user is null || !_passwordHasher.VerifyPassword(user.PasswordHash, request.Password))
             {
@@ -52,6 +52,7 @@ public class LoginCommandHandler  : IRequestHandler<LoginCommand, AuthResultDto>
                 DateTime.UtcNow.AddDays(7));
         
             await _refreshTokenRepository.AddAsync(refreshToken);
+            await _unitOfWork.CommitTransactionAsync();
              
             return new AuthResultDto
             {

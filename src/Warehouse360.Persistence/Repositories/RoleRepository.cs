@@ -18,15 +18,15 @@ public class RoleRepository(IUnitOfWork unitOfWork) : IRoleRepository
         const string query = $"""SELECT * FROM Roles""";
         return (await unitOfWork.Connection.QueryAsync<Role>(query)).ToList();
     }
-
+    
     public async Task<bool> AddAsync(Role role)
     {
         const string query = 
             $"""
-             INSERT INTO Roles (Id, Name,)
+             INSERT INTO Roles (Id, Name)
              VALUES (@Id, @Name)
              """;
-        var parameters = new { role.Id, role.Name };
+        var parameters = new { Id = role.Id, Name = role.Name };
         
         var command = new CommandDefinition(query, parameters);
         
@@ -34,7 +34,7 @@ public class RoleRepository(IUnitOfWork unitOfWork) : IRoleRepository
         
         return result > 0;
     }
-
+    
     public async Task<bool> UpdateAsync(Role role)
     {
         const string query = 
@@ -48,6 +48,25 @@ public class RoleRepository(IUnitOfWork unitOfWork) : IRoleRepository
         
         var result = await unitOfWork.Connection.ExecuteAsync(command);
         
+        return result > 0;
+    }
+    
+    public async Task<bool> AssignPermissionToRoleAsync(Role role)
+    {
+        const string query = 
+            $"""
+             INSERT INTO RolePermissions (RoleId, PermissionId)
+             VALUES (@RoleId, @PermissionId)
+             """;
+
+        var parameters = role.Permissions.Select(permission => new 
+        {
+            RoleId = role.Id, 
+            PermissionId = permission.Id
+        });
+
+        var result = await unitOfWork.Connection.ExecuteAsync(query, parameters);
+
         return result > 0;
     }
 }

@@ -2,7 +2,7 @@ using MediatR;
 
 namespace Warehouse360.Application.IdentityManagement.Commands;
 
-public class AssignRoleToUserCommand : IRequest
+public class AssignRoleToUserCommand : IRequest<bool>
 {
     public Guid UserId { get; set; }
     public Guid RoleId { get; set; }

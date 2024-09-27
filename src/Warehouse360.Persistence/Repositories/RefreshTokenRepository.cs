@@ -22,10 +22,10 @@ public class RefreshTokenRepository(IUnitOfWork unitOfWork) : IRefreshTokenRepos
              """;
         var parameters = new 
         { 
-            refreshToken.Id,
-            refreshToken.UserId,
-            refreshToken.Token,
-            refreshToken.ExpiresAt 
+            Id = refreshToken.Id,
+            UserId =refreshToken.UserId,
+            Token= refreshToken.Token,
+            ExpiresAt =refreshToken.ExpiresAt 
         };
         
         var command = new CommandDefinition(query, parameters);

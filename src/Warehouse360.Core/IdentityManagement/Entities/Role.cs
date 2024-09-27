@@ -12,8 +12,9 @@ public class Role : BaseEntity
         Permissions = new List<Permission>();
     }
     
-    public Role(string name)
+    public Role(Guid id, string name)
     {
+        Id = id;
         Name = name;
         Permissions = new List<Permission>();
     }

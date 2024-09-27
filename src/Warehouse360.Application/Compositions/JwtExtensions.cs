@@ -30,24 +30,57 @@ public static class JwtExtensions
             {
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
                     ValidateIssuer = true,
                     ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
                     ValidIssuer = configuration["JwtSettings:Issuer"],
                     ValidAudience = configuration["JwtSettings:Audience"],
-                    ValidateLifetime = true
+                    IssuerSigningKey = new SymmetricSecurityKey(key)
                 };
             });
 
         services.AddAuthorization(options =>
         {
-            options.AddPolicy("AdminOrManagerPolicy", policy => 
-                policy.RequireAssertion(context => 
-                    context.User.IsInRole("Admin") || context.User.IsInRole("Manager")));
-            
+            // Политики на основе разрешений (Permissions)
+            options.AddPolicy("ManageUsersPolicy", policy =>
+                policy.Requirements.Add(new PermissionRequirement("ManageUsers")));
+
+            options.AddPolicy("ViewUsersPolicy", policy =>
+                policy.Requirements.Add(new PermissionRequirement("ViewUsers")));
+
+            options.AddPolicy("ManageProductsPolicy", policy =>
+                policy.Requirements.Add(new PermissionRequirement("ManageProducts")));
+
+            options.AddPolicy("ViewProductsPolicy", policy =>
+                policy.Requirements.Add(new PermissionRequirement("ViewProducts")));
+
+            options.AddPolicy("ManageInventoryPolicy", policy =>
+                policy.Requirements.Add(new PermissionRequirement("ManageInventory")));
+
+            options.AddPolicy("ViewInventoryPolicy", policy =>
+                policy.Requirements.Add(new PermissionRequirement("ViewInventory")));
+
             options.AddPolicy("ManageOrdersPolicy", policy =>
                 policy.Requirements.Add(new PermissionRequirement("ManageOrders")));
+
+            options.AddPolicy("ViewOrdersPolicy", policy =>
+                policy.Requirements.Add(new PermissionRequirement("ViewOrders")));
+
+            options.AddPolicy("ProcessOrdersPolicy", policy =>
+                policy.Requirements.Add(new PermissionRequirement("ProcessOrders")));
+
+            options.AddPolicy("ManageCategoriesPolicy", policy =>
+                policy.Requirements.Add(new PermissionRequirement("ManageCategories")));
+
+            options.AddPolicy("ViewCategoriesPolicy", policy =>
+                policy.Requirements.Add(new PermissionRequirement("ViewCategories")));
+
+            // Политики на основе ролей
+            options.AddPolicy("AdminPolicy", policy => policy.RequireRole("Admin"));
+            options.AddPolicy("ManagerPolicy", policy => policy.RequireRole("Manager"));
+            options.AddPolicy("WarehouseWorkerPolicy", policy => policy.RequireRole("WarehouseWorker"));
+            options.AddPolicy("CustomerPolicy", policy => policy.RequireRole("Customer"));
         });
 
         return services;

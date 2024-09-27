@@ -22,7 +22,7 @@ public class UserService : IUserService
     public async Task<User> CreateUser(string username, Email email, string password)
     {
         var hash = _passwordHasher.HashPassword(password);
-        var user = new User(username, email, hash);
+        var user = new User(Guid.NewGuid(), username, email, hash);
 
         await _unitOfWork.BeginTransactionAsync();
         try

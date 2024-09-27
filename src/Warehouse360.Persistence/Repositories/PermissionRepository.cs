@@ -23,10 +23,10 @@ public class PermissionRepository(IUnitOfWork unitOfWork) : IPermissionRepositor
     {
         const string query = 
             $"""
-             INSERT INTO Permissions (Id, Name,)
+             INSERT INTO Permissions (Id, Name)
              VALUES (@Id, @Name)
              """;
-        var parameters = new { permission.Id, permission.Name };
+        var parameters = new { Id = permission.Id, Name = permission.Name };
         
         var command = new CommandDefinition(query, parameters);
         
@@ -42,7 +42,7 @@ public class PermissionRepository(IUnitOfWork unitOfWork) : IPermissionRepositor
              Update Permissions Set Name = @Name
              WHERE Id = @Id
              """;
-        var parameters = new { permission.Name, permission.Id };
+        var parameters = new { Name = permission.Name, Id = permission.Id };
         
         var command = new CommandDefinition(query, parameters);
         
