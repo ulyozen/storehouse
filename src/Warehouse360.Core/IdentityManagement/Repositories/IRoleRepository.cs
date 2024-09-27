@@ -8,5 +8,5 @@ public interface IRoleRepository
     Task<List<Role>> GetAllAsync();
     Task<bool> AddAsync(Role role);
     Task<bool> UpdateAsync(Role role);
-    
+    Task<bool> AssignPermissionToRoleAsync(Role role);
 }

@@ -16,9 +16,9 @@ public class JwtTokenGenerator(IOptions<JwtSettings> options) : IJwtTokenGenerat
     {
         var claims = new List<Claim>()
         {
-            new Claim(JwtRegisteredClaimNames.Sub, user.Username),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-            new Claim("userId", user.Id.ToString())
+            new(JwtRegisteredClaimNames.Sub, user.Username),
+            new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new("userId", user.Id.ToString())
         };
         
         foreach (var role in user.Roles)

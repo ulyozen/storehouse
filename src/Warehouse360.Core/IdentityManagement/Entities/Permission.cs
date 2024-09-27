@@ -6,8 +6,11 @@ public class Permission : BaseEntity
 {
     public string Name { get; private set; }
 
-    public Permission(string name)
+    public Permission() { }
+    
+    public Permission(Guid id, string name)
     {
-        Name = name ?? throw new ArgumentNullException(nameof(name));
+        Id = id;
+        Name = name;
     }
 }

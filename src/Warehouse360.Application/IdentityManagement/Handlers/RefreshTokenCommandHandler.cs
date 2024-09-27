@@ -38,7 +38,6 @@ public class RefreshTokenCommandHandler : IRequestHandler<RefreshTokenCommand, A
         var newRefreshToken = new RefreshToken(Guid.NewGuid(), user.Id, Guid.NewGuid().ToString(), DateTime.UtcNow.AddDays(7));
         await _refreshTokenRepository.AddAsync(newRefreshToken);
 
-        // Удаляем старый refresh-токен
         await _refreshTokenRepository.RemoveAsync(refreshToken.Id);
 
         return new AuthResultDto

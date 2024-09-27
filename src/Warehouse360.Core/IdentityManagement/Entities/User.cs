@@ -12,10 +12,12 @@ public class User : BaseEntity
 
     public User() 
     {
+        Roles = new List<Role>();
     }
     
-    public User(string username, Email email, string passwordHash)
+    public User(Guid id, string username, Email email, string passwordHash)
     {
+        Id = id;
         Username = username;
         Email = email;
         PasswordHash = passwordHash;

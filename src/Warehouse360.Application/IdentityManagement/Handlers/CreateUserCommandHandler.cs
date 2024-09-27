@@ -12,7 +12,9 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, UserD
     private readonly IValidator<CreateUserCommand> _validator;
     private readonly IUserService _userService;
 
-    public CreateUserCommandHandler(IValidator<CreateUserCommand> validator, IUserService userService)
+    public CreateUserCommandHandler(
+        IValidator<CreateUserCommand> validator, 
+        IUserService userService)
     {
         _validator = validator;
         _userService = userService;
@@ -22,7 +24,10 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, UserD
     {
         await _validator.ValidateAndThrowAsync(request, cancellationToken);
         
-        var user = await _userService.CreateUser(request.Username, new Email(request.Email), request.Password);
+        var user = await _userService.CreateUser(
+            request.Username.ToLower(), 
+            new Email(request.Email.ToLower()), 
+            request.Password);
 
         return new UserDto(user.Id, user.Username, user.Email.Value);
     }
