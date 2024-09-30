@@ -24,15 +24,9 @@ public static class JwtExtensions
             config.Audience = configuration["JWT_AUDIENCE"] 
                               ?? throw new ArgumentNullException("JWT_AUDIENCE environment variable is missing.");
         });
-        
-        var serviceProvider = services.BuildServiceProvider();
-        
-        var jwtSettings = serviceProvider.GetRequiredService<IOptions<JwtSettings>>().Value;
-        
+
         services.AddSingleton<IAuthorizationHandler, PermissionHandler>();
         services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
-        
-        var key = Encoding.UTF8.GetBytes(jwtSettings.Secret);
 
         services.AddAuthentication(options =>
             {
@@ -41,6 +35,12 @@ public static class JwtExtensions
             })
             .AddJwtBearer(options =>
             {
+                // Внедряем IOptions<JwtSettings> через DI
+                var sp = services.BuildServiceProvider();
+                var jwtSettings = sp.GetRequiredService<IOptions<JwtSettings>>().Value;
+
+                var key = Encoding.UTF8.GetBytes(jwtSettings.Secret);
+
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,
@@ -52,6 +52,7 @@ public static class JwtExtensions
                     IssuerSigningKey = new SymmetricSecurityKey(key)
                 };
             });
+
 
         services.AddAuthorization(options =>
         {
