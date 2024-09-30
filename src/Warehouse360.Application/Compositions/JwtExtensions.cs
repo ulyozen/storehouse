@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Warehouse360.Application.IdentityManagement.Abstractions;
 using Warehouse360.Application.IdentityManagement.Security;
@@ -14,11 +15,18 @@ public static class JwtExtensions
 {
     public static IServiceCollection AddJwtAuthenticationExtensions(this IServiceCollection services, IConfiguration configuration)
     {
-        var key = Encoding.UTF8.GetBytes(configuration["JwtSettings:Secret"]!);
+        services.Configure<JwtSettings>(config =>
+        {
+            config.Secret = configuration["JWT_SECRET"] 
+                            ?? throw new ArgumentNullException("JWT_SECRET environment variable is missing.");
+            config.Issuer = configuration["JWT_ISSUER"] 
+                            ?? throw new ArgumentNullException("JWT_ISSUER environment variable is missing.");
+            config.Audience = configuration["JWT_AUDIENCE"] 
+                            ?? throw new ArgumentNullException("JWT_AUDIENCE environment variable is missing.");
+        });
 
-        services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
         services.AddSingleton<IAuthorizationHandler, PermissionHandler>();
-
+        
         services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
 
         services.AddAuthentication(options =>
@@ -28,17 +36,24 @@ public static class JwtExtensions
             })
             .AddJwtBearer(options =>
             {
+                var provider = services.BuildServiceProvider();
+                
+                var jwtSettings = provider.GetRequiredService<IOptions<JwtSettings>>().Value;
+
+                var key = Encoding.UTF8.GetBytes(jwtSettings.Secret);
+
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,
                     ValidateAudience = true,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    ValidIssuer = configuration["JwtSettings:Issuer"],
-                    ValidAudience = configuration["JwtSettings:Audience"],
+                    ValidIssuer = jwtSettings.Issuer,
+                    ValidAudience = jwtSettings.Audience,
                     IssuerSigningKey = new SymmetricSecurityKey(key)
                 };
             });
+
 
         services.AddAuthorization(options =>
         {

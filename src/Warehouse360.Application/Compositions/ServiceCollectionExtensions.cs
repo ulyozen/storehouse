@@ -1,7 +1,6 @@
 using System.Reflection;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
-using Warehouse360.Application.IdentityManagement.Abstractions;
 using Warehouse360.Application.IdentityManagement.Services;
 using Warehouse360.Core.IdentityManagement.Services;
 
