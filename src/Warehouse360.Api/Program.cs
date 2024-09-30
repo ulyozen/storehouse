@@ -1,4 +1,3 @@
-using Warehouse360.Api.Compositions;
 using Warehouse360.Application.Compositions;
 using Warehouse360.Persistence.Compositions;
 using Warehouse360.Persistence.Configurations;
@@ -13,7 +12,6 @@ builder.Services.AddSwaggerGen();
 
 builder.Services
     .AddDatabaseSettings(builder.Configuration)
-    .AddJwtSettings(builder.Configuration)
     .AddJwtAuthenticationExtensions(builder.Configuration)
     .AddApplicationExtension()
     .AddPersistenceExtension()
