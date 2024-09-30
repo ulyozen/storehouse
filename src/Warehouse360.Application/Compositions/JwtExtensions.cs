@@ -22,10 +22,11 @@ public static class JwtExtensions
             config.Issuer = configuration["JWT_ISSUER"] 
                             ?? throw new ArgumentNullException("JWT_ISSUER environment variable is missing.");
             config.Audience = configuration["JWT_AUDIENCE"] 
-                              ?? throw new ArgumentNullException("JWT_AUDIENCE environment variable is missing.");
+                            ?? throw new ArgumentNullException("JWT_AUDIENCE environment variable is missing.");
         });
 
         services.AddSingleton<IAuthorizationHandler, PermissionHandler>();
+        
         services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
 
         services.AddAuthentication(options =>
@@ -35,9 +36,9 @@ public static class JwtExtensions
             })
             .AddJwtBearer(options =>
             {
-                // Внедряем IOptions<JwtSettings> через DI
-                var sp = services.BuildServiceProvider();
-                var jwtSettings = sp.GetRequiredService<IOptions<JwtSettings>>().Value;
+                var provider = services.BuildServiceProvider();
+                
+                var jwtSettings = provider.GetRequiredService<IOptions<JwtSettings>>().Value;
 
                 var key = Encoding.UTF8.GetBytes(jwtSettings.Secret);
 
