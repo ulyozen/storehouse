@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Warehouse360.Application.Compositions;
+using Warehouse360.Application.Compositions.Options;
 using Warehouse360.Core.CatalogManagement.Repositories;
 using Warehouse360.Core.IdentityManagement.Repositories;
 using Warehouse360.Core.SeedWork.Interfaces;
