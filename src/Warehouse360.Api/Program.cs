@@ -1,20 +1,23 @@
+using Warehouse360.Api.Compositions;
 using Warehouse360.Application.Compositions;
 using Warehouse360.Persistence.Compositions;
 using Warehouse360.Persistence.Configurations;
 using Warehouse360.Redis.Compositions;
 
 var builder = WebApplication.CreateBuilder(args);
-var config = builder.Configuration;
+builder.Configuration.AddEnvironmentVariables();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services
+    .AddDatabaseSettings(builder.Configuration)
+    .AddJwtSettings(builder.Configuration)
+    .AddJwtAuthenticationExtensions(builder.Configuration)
     .AddApplicationExtension()
-    .AddJwtAuthenticationExtensions(config)
-    .AddPersistenceExtension(config)
-    .AddRedisExtension(config);
+    .AddPersistenceExtension()
+    .AddRedisExtension(builder.Configuration);
 
 var app = builder.Build();
 

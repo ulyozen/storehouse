@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Warehouse360.Application.Compositions;
 using Warehouse360.Application.IdentityManagement.Abstractions;
 using Warehouse360.Core.IdentityManagement.Entities;
 
