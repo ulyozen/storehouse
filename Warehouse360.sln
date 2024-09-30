@@ -20,6 +20,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution-items", "solution-
 		README.md = README.md
 		Dockerfile = Dockerfile
 		.dockerignore = .dockerignore
+		docker-compose.yml = docker-compose.yml
+		.gitignore = .gitignore
+		.env = .env
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Warehouse360.Core", "Warehouse360.Core", "{AE93E829-0A07-455D-80A1-1734488BF21E}"
@@ -57,6 +60,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityManagement", "Ident
 	ProjectSection(SolutionItems) = preProject
 		docs\Warehouse360.Core\IdentityManagment\RolesAndPermisiions.md = docs\Warehouse360.Core\IdentityManagment\RolesAndPermisiions.md
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F73D2734-A5B2-481C-B608-CCD53BCDE57E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

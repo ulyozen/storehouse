@@ -11,19 +11,16 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services
-    .AddDatabaseSettings(builder.Configuration)
     .AddJwtAuthenticationExtensions(builder.Configuration)
     .AddApplicationExtension()
     .AddPersistenceExtension()
+    .AddDatabaseSettings(builder.Configuration)
     .AddRedisExtension(builder.Configuration);
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
