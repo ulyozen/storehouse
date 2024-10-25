@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Warehouse360.Application.Compositions.Options;
 using Warehouse360.Application.IdentityManagement.Abstractions;
 using Warehouse360.Application.IdentityManagement.Security;
 

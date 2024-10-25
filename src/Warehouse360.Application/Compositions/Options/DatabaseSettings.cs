@@ -1,4 +1,4 @@
-namespace Warehouse360.Application.Compositions;
+namespace Warehouse360.Application.Compositions.Options;
 
 public class DatabaseSettings
 {

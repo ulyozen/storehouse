@@ -20,6 +20,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution-items", "solution-
 		README.md = README.md
 		Dockerfile = Dockerfile
 		.dockerignore = .dockerignore
+		docker-compose.yml = docker-compose.yml
+		.gitignore = .gitignore
+		.env = .env
+		.github\workflows\ci.yml = .github\workflows\ci.yml
+		kubernetes\deployment.yaml = kubernetes\deployment.yaml
+		kubernetes\service.yaml = kubernetes\service.yaml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Warehouse360.Core", "Warehouse360.Core", "{AE93E829-0A07-455D-80A1-1734488BF21E}"

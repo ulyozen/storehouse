@@ -28,11 +28,11 @@ public class AssignRoleToUserCommandHandler : IRequestHandler<AssignRoleToUserCo
         {
             var user = await _userRepository.GetByIdAsync(request.UserId);
             if (user is null)
-                throw new Exception($"User with ID {request.UserId} doesnt exist");
+                throw new ArgumentNullException($"User with ID {request.UserId} doesnt exist");
         
             var role = await _roleRepository.GetByIdAsync(request.RoleId);
             if (role is null)
-                throw new Exception($"User with ID {request.RoleId} doesnt exist");
+                throw new ArgumentNullException($"User with ID {request.RoleId} doesnt exist");
 
             user.AssignRole(role);
             

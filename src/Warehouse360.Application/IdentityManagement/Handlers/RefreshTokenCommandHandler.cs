@@ -25,13 +25,13 @@ public class RefreshTokenCommandHandler : IRequestHandler<RefreshTokenCommand, A
         var refreshToken = await _refreshTokenRepository.GetByTokenAsync(request.RefreshToken);
         if (refreshToken == null || refreshToken.IsExpired)
         {
-            throw new Exception("Invalid or expired refresh token");
+            throw new ArgumentNullException("Invalid or expired refresh token: " + refreshToken);
         }
 
         var user = await _userRepository.GetByIdAsync(refreshToken.UserId);
-        if (user == null)
+        if (user is null)
         {
-            throw new Exception("User not found");
+            throw new ArgumentNullException("User not found: " + user);
         }
 
         var newAccessToken = _jwtTokenGenerator.GenerateToken(user);

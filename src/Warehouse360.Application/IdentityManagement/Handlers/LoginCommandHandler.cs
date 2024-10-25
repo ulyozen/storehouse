@@ -40,8 +40,8 @@ public class LoginCommandHandler  : IRequestHandler<LoginCommand, AuthResultDto>
             
             if (user is null || !_passwordHasher.VerifyPassword(user.PasswordHash, request.Password))
             {
-                throw new Exception($"User with username {request.Username} doesnt exist");
-            };
+                throw new ArgumentNullException($"User with username {request.Username} doesnt exist");
+            }
 
             var jwtToken = _jwtTokenGenerator.GenerateToken(user);
 

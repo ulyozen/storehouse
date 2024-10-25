@@ -32,8 +32,8 @@ public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, UserDto
         try
         {
             var user = await _userRepository.GetByIdAsync(request.UserId);
-            if (user == null)
-                throw new Exception("User not found");
+            if (user is null)
+                throw new ArgumentNullException("User not found: " + user);
             
             var userDto = new UserDto(user.Id, user.Username, user.Email.Value);
 
