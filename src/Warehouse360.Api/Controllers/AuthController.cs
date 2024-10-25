@@ -1,7 +1,6 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Warehouse360.Application.IdentityManagement.Commands;
-using Warehouse360.Application.IdentityManagement.Dtos;
 
 namespace Warehouse360.Api.Controllers;
 
@@ -17,8 +16,8 @@ public class AuthController : ControllerBase
         _mediator = mediator;
     }
     
-    [HttpPost("signup")]
-    public async Task<IActionResult> SignUp([FromBody] CreateUserCommand command)
+    [HttpPost("register")]
+    public async Task<IActionResult> Register([FromBody] CreateUserCommand command)
     {
         var result = await _mediator.Send(command);
         return Ok(result);
@@ -38,29 +37,22 @@ public class AuthController : ControllerBase
         return Ok(result);
     }
     
-    [HttpPost("role")]
-    public async Task<IActionResult> Role([FromBody] CreateRoleCommand command)
+    [HttpPost("logout")]
+    public async Task<IActionResult> Logout([FromBody] CreateRoleCommand command)
     {
         var result = await _mediator.Send(command);
         return Ok(result);
     }
     
-    [HttpPost("permission")]
-    public async Task<IActionResult> Permission([FromBody] CreatePermissionCommand command)
+    [HttpPost("reset-password")]
+    public async Task<IActionResult> ResetPassword([FromBody] CreateRoleCommand command)
     {
         var result = await _mediator.Send(command);
         return Ok(result);
     }
     
-    [HttpPost("AssignRoleToUser")]
-    public async Task<IActionResult> AssignRoleToUser([FromBody] AssignRoleToUserCommand command)
-    {
-        var result = await _mediator.Send(command);
-        return Ok(result);
-    }
-    
-    [HttpPost("AssignPermissionToRole")]
-    public async Task<IActionResult> AssignPermissionToRole([FromBody] AssignPermissionToRoleCommand command)
+    [HttpPost("confirm-email")]
+    public async Task<IActionResult> ConfirmEmail([FromBody] CreateRoleCommand command)
     {
         var result = await _mediator.Send(command);
         return Ok(result);

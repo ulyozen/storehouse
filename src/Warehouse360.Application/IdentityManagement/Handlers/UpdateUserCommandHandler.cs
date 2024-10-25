@@ -27,7 +27,7 @@ public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, bool>
         {
             var user = await _userRepository.GetByIdAsync(request.UserId);
             if (user == null)
-                throw new Exception("User not found");
+                throw new ArgumentNullException("User not found: " + user);
 
             /*
              * Тут логика обновления пользователя
